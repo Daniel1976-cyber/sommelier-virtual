@@ -1,71 +1,92 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Sommelier Virtual</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sommelier Virtual | Bajo La Ceiba</title>
   <style>
     body {
-      font-family: sans-serif;
-      text-align: center;
-      padding: 2rem;
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      background-color: #fdf9f3;
+      color: #5a2e0f;
     }
-    #fallback {
-      display: none;
-      color: #a94442;
-      background-color: #f2dede;
-      border: 1px solid #ebccd1;
-      padding: 1rem;
+    header {
+      display: flex;
+      align-items: center;
+      padding: 10px 20px;
+      background-color: #fff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    header img {
+      height: 60px;
+      margin-right: 20px;
+    }
+    header h1 {
+      font-size: 1.5em;
+      margin: 0;
+    }
+    main {
+      padding: 20px;
+      text-align: center;
+    }
+    .btn-tienda {
+      display: inline-block;
+      padding: 10px 20px;
+      margin-top: 20px;
+      background-color: #a5441b;
+      color: #fff;
+      text-decoration: none;
       border-radius: 8px;
-      max-width: 400px;
-      margin: 2rem auto;
+      transition: background-color 0.3s;
+    }
+    .btn-tienda:hover {
+      background-color: #872d0c;
+    }
+    footer {
+      margin-top: 50px;
+      text-align: center;
+      font-size: 0.9em;
+      color: #777;
     }
   </style>
 </head>
 <body>
-  <h2>🍷 Bienvenido al Sommelier Virtual</h2>
-  <p>Haz clic en el botón de chat abajo a la derecha para hablar con nuestro experto en vinos.</p>
+  <header>
+    <img src="bajo%20la%20ceiba.webp" alt="Logo Bajo La Ceiba">
+    <h1>Sommelier Virtual - Bajo La Ceiba</h1>
+  </header>
+  <main>
+    <p>Hola 🍷 soy tu sommelier virtual. ¿En qué puedo ayudarte hoy?<br>
+    Descubre vinos, aprende sobre maridajes o explora nuestra tienda online.</p>
+    <a class="btn-tienda" href="https://elyerromenu.com/b/tienda-bajo-la-ceiba/" target="_blank">Ir a la tienda online</a>
+  </main>
+  <footer>
+    <p>Contacto vía WhatsApp: <br>
+    <a href="https://api.whatsapp.com/send?phone=+5353533231">+53 5353 3231</a> | 
+    <a href="https://api.whatsapp.com/send?phone=+5352710718">+53 5271 0718</a></p>
+    <p>&copy; 2025 Bajo La Ceiba - Casa de Vinos</p>
+  </footer>
 
-  <!-- Mensaje de error si el bot no carga -->
-  <div id="fallback">
-    ⚠️ El Sommelier Virtual está temporalmente fuera de servicio.  
-    <br>Por favor, vuelve a visitarnos pronto. ¡Salud!
-  </div>
-
-  <!-- Voiceflow Chat Widget con control de error -->
+  <!-- Voiceflow Widget -->
   <script type="text/javascript">
     (function(d, t) {
         var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
         v.onload = function() {
-          try {
-            window.voiceflow.chat.load({
-              verify: { projectID: '6873fdd8bf484647c17091d9' },
-              url: 'https://general-runtime.voiceflow.com',
-              versionID: 'production',
-              voice: {
-                url: "https://runtime-api.voiceflow.com"
-              }
-            });
-          } catch (e) {
-            document.getElementById('fallback').style.display = 'block';
-          }
-        };
-        v.onerror = function() {
-          document.getElementById('fallback').style.display = 'block';
-        };
-        v.src = "https://cdn.voiceflow.com/widget-next/bundle.mjs";
-        v.type = "text/javascript";
+          window.voiceflow.chat.load({
+            verify: { projectID: '6873fdd8bf484647c17091d9' },
+            url: 'https://general-runtime.voiceflow.com',
+            versionID: 'production',
+            voice: {
+              url: "https://runtime-api.voiceflow.com"
+            }
+          });
+        }
+        v.src = "https://cdn.voiceflow.com/widget-next/bundle.mjs"; 
+        v.type = "text/javascript"; 
         s.parentNode.insertBefore(v, s);
     })(document, 'script');
-
-    // Si no carga en 5 segundos, mostramos el aviso
-    setTimeout(() => {
-      const botReady = window.voiceflow && window.voiceflow.chat && window.voiceflow.chat.client;
-      if (!botReady) {
-        document.getElementById('fallback').style.display = 'block';
-      }
-    }, 5000);
   </script>
 </body>
 </html>
-    
+
