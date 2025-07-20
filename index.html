@@ -4,29 +4,68 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Sommelier Virtual</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      padding: 2rem;
+    }
+    #fallback {
+      display: none;
+      color: #a94442;
+      background-color: #f2dede;
+      border: 1px solid #ebccd1;
+      padding: 1rem;
+      border-radius: 8px;
+      max-width: 400px;
+      margin: 2rem auto;
+    }
+  </style>
 </head>
-<body style="margin: 0; padding: 0;">
-  <h2 style="text-align:center; font-family:sans-serif; padding:2rem;">🍷 Bienvenido al Sommelier Virtual</h2>
-  <p style="text-align:center;">Haz clic en el botón de chat abajo a la derecha para hablar con nuestro experto en vinos.</p>
+<body>
+  <h2>🍷 Bienvenido al Sommelier Virtual</h2>
+  <p>Haz clic en el botón de chat abajo a la derecha para hablar con nuestro experto en vinos.</p>
 
-  <!-- Voiceflow Chat Widget -->
+  <!-- Mensaje de error si el bot no carga -->
+  <div id="fallback">
+    ⚠️ El Sommelier Virtual está temporalmente fuera de servicio.  
+    <br>Por favor, vuelve a visitarnos pronto. ¡Salud!
+  </div>
+
+  <!-- Voiceflow Chat Widget con control de error -->
   <script type="text/javascript">
     (function(d, t) {
         var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
         v.onload = function() {
-          window.voiceflow.chat.load({
-            verify: { projectID: '6873fdd8bf484647c17091d9' },
-            url: 'https://general-runtime.voiceflow.com',
-            versionID: 'production',
-            voice: {
-              url: "https://runtime-api.voiceflow.com"
-            }
-          });
-        }
+          try {
+            window.voiceflow.chat.load({
+              verify: { projectID: '6873fdd8bf484647c17091d9' },
+              url: 'https://general-runtime.voiceflow.com',
+              versionID: 'production',
+              voice: {
+                url: "https://runtime-api.voiceflow.com"
+              }
+            });
+          } catch (e) {
+            document.getElementById('fallback').style.display = 'block';
+          }
+        };
+        v.onerror = function() {
+          document.getElementById('fallback').style.display = 'block';
+        };
         v.src = "https://cdn.voiceflow.com/widget-next/bundle.mjs";
         v.type = "text/javascript";
         s.parentNode.insertBefore(v, s);
     })(document, 'script');
+
+    // Si no carga en 5 segundos, mostramos el aviso
+    setTimeout(() => {
+      const botReady = window.voiceflow && window.voiceflow.chat && window.voiceflow.chat.client;
+      if (!botReady) {
+        document.getElementById('fallback').style.display = 'block';
+      }
+    }, 5000);
   </script>
 </body>
 </html>
+    
