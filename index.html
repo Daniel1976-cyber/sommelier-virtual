@@ -50,12 +50,43 @@
       color: #777;
     }
   </style>
+</head>
+<body>
+  <header>
+    <img src="bajo%20la%20ceiba.webp" alt="Logo Bajo La Ceiba">
+    <h1>Sommelier Virtual - Bajo La Ceiba</h1>
+  </header>
+  <main>
+    <p>Hola 🍷 soy tu sommelier virtual. ¿En qué puedo ayudarte hoy?<br>
+    Descubre vinos, aprende sobre maridajes o explora nuestra tienda online.</p>
+    <a class="btn-tienda" href="https://elyerromenu.com/b/tienda-bajo-la-ceiba/" target="_blank">Ir a la tienda online</a>
+  </main>
+  <footer>
+    <p>Contacto vía WhatsApp: <br>
+    <a href="https://api.whatsapp.com/send?phone=+5353533231">+53 5353 3231</a> | 
+    <a href="https://api.whatsapp.com/send?phone=+5352710718">+53 5271 0718</a></p>
+    <p>&copy; 2025 Bajo La Ceiba - Casa de Vinos</p>
+  </footer>
 
- 
+  <!-- Voiceflow Widget -->
+  <script type="text/javascript">
+    (function(d, t) {
+        var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
+        v.onload = function() {
+          window.voiceflow.chat.load({
+            verify: { projectID: '6873fdd8bf484647c17091d9' },
+            url: 'https://general-runtime.voiceflow.com',
+            versionID: 'production',
+            voice: {
+              url: "https://runtime-api.voiceflow.com"
+            }
+          });
+        }
+        v.src = "https://cdn.voiceflow.com/widget-next/bundle.mjs"; 
+        v.type = "text/javascript"; 
+        s.parentNode.insertBefore(v, s);
+    })(document, 'script');
   </script>
-
-  <!-- Tidio Widget -->
-  <script src="//code.tidio.co/za0varlabbz7obmesqou8bwqr4eykdbv.js" async></script>
 </body>
 </html>
 
